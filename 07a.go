@@ -28,7 +28,6 @@ func fileToArray(fn string) map[string]map[string]int {
 		for k, v := range a {
 			l[k] = v
 		}
-
 	}
 
 	file.Close()
@@ -38,7 +37,7 @@ func fileToArray(fn string) map[string]map[string]int {
 func parseSentence(in string) map[string]map[string]int {
 	var ret = map[string]map[string]int{}
 
-	r := regexp.MustCompile(`^(.*)bags contain(.*)$`)
+	r := regexp.MustCompile(`^(.*) bags contain(.*)$`)
 	q := r.FindStringSubmatch(in)
 	parent := q[1]
 	ret[parent] = map[string]int{}
@@ -80,11 +79,8 @@ func distinctArray(in []string) []string {
 
 func parseBags(bags map[string]map[string]int, val string) []string {
 	var pBags []string
-	count := 0
-	val = val[:(len(val) - 1)]
 
 	for k, v := range bags {
-		count += 1
 		for k1, _ := range v {
 			if val == k1 {
 				pBags = append(pBags, k)
@@ -97,7 +93,7 @@ func parseBags(bags map[string]map[string]int, val string) []string {
 
 func main() {
 	var fn = "input/07.txt"
-	myBag := "shiny gold\000"
+	myBag := "shiny gold"
 
 	nestedBags := fileToArray(fn)
 
