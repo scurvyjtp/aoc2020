@@ -50,7 +50,6 @@ func findAll(in []int, start int, end int) int {
 		if in[i] == start+1 || in[i] == start+2 || in[i] == start+3 {
 			if in[i] == end {
 				return (1)
-				//fmt.Println("True")
 			}
 			ret += findAll(in, in[i], end)
 		}
@@ -59,11 +58,12 @@ func findAll(in []int, start int, end int) int {
 }
 
 func main() {
-	var fn = "input/10.txt"
+	var fn = "input/10_t.txt"
 	vals := fileToArray(fn)
 	end := findMax(vals) + 3
 
 	vals = append(vals, 0, end)
 
-	fmt.Println(findAll(vals, 0, end))
+	fmt.Println("Answer:", findAll(vals, 0, end))
+
 }
