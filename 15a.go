@@ -34,7 +34,6 @@ func main() {
 
 	for count := len(origI); count != turns; count++ {
 		origI = append(origI, getAge(origI))
-		fmt.Printf("Turn: %d  \t Value: %d\n", count, origI[len(origI)-1])
 	}
 
 	fmt.Printf("Answer: %d\n", origI[len(origI)-1])
